@@ -1,0 +1,137 @@
+{
+  "name": "Winter Overlay Board",
+  "version": "1.0.0",
+  "description": "Premium dark winter theme with overlay-based category navigation and realistic snowfall effects",
+  "author": "Salla Developer",
+  "license": "MIT",
+  "support": {
+    "email": "support@example.com",
+    "docs": "https://docs.salla.dev"
+  },
+  "screenshots": [
+    "screenshot.png"
+  ],
+  "settings": [
+    {
+      "type": "static",
+      "format": "title",
+      "id": "general-header",
+      "value": "إعدادات عامة",
+      "variant": "h6"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "اللون الأساسي",
+      "format": "picker",
+      "value": "#8A2BE2"
+    },
+    {
+      "type": "color",
+      "id": "secondary_color",
+      "label": "اللون الثانوي",
+      "format": "picker",
+      "value": "#9D4EDD"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "لون الخلفية",
+      "format": "picker",
+      "value": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "لون النص",
+      "format": "picker",
+      "value": "#E0E0E0"
+    },
+    {
+      "type": "static",
+      "format": "title",
+      "id": "winter-effects-header",
+      "value": "❄️ تأثيرات الشتاء",
+      "variant": "h6"
+    },
+    {
+      "type": "boolean",
+      "id": "enable_snow",
+      "label": "تفعيل تساقط الثلج",
+      "format": "switch",
+      "required": false,
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "number",
+      "id": "snow_intensity",
+      "label": "كثافة الثلج",
+      "format": "range",
+      "min": 50,
+      "max": 200,
+      "step": 10,
+      "value": 120
+    },
+    {
+      "type": "static",
+      "format": "title",
+      "id": "overlay-header",
+      "value": "⚡ إعدادات اللوحة التفاعلية",
+      "variant": "h6"
+    },
+    {
+      "type": "boolean",
+      "id": "enable_overlay_navigation",
+      "label": "تفعيل التصفح باللوحة التفاعلية",
+      "format": "switch",
+      "required": false,
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "number",
+      "id": "overlay_width",
+      "label": "عرض اللوحة (%)",
+      "format": "range",
+      "min": 70,
+      "max": 95,
+      "step": 5,
+      "value": 90
+    },
+    {
+      "type": "number",
+      "id": "overlay_height",
+      "label": "ارتفاع اللوحة (%)",
+      "format": "range",
+      "min": 70,
+      "max": 95,
+      "step": 5,
+      "value": 90
+    }
+  ],
+  "features": [
+    {
+      "key": "overlay-navigation",
+      "name": "التصفح باللوحة التفاعلية",
+      "description": "نظام تصفح متقدم بلوحات تفاعلية بدون إعادة تحميل الصفحة"
+    },
+    {
+      "key": "snow-effects",
+      "name": "تأثيرات الثلج",
+      "description": "تأثيرات ثلجية واقعية على كامل الموقع"
+    },
+    {
+      "key": "dark-mode",
+      "name": "الوضع الداكن",
+      "description": "تصميم داكن أنيق مع ألوان شتوية"
+    }
+  ],
+  "components": [
+    {
+      "key": "category-overlay-board",
+      "name": "لوحة الفئات التفاعلية",
+      "description": "عرض الفئات في لوحة تفاعلية"
+    }
+  ]
+}
