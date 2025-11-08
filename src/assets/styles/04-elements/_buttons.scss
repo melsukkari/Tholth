@@ -1,0 +1,9 @@
+.btn {
+  padding: 12px 24px;
+  background: $violet-primary;
+  color: #fff;
+  border: none;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  &:hover { background: $violet-hover; }
+}
