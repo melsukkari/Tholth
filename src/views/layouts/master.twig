@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ user.language.code }}" dir="{{ user.language.dir }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - {{ store.name }}</title>
+    <link rel="stylesheet" href="{{ 'app.css' | asset }}">
+    {{ salla.head }}
+</head>
+<body>
+    {{ salla.body }}
+    {% component 'header.header' %}
+    <main>{% block content %}{% endblock %}</main>
+    {% component 'footer.footer' %}
+    
+    <script>
+        window.SNOW_INTENSITY = {{ theme.settings.get('snow_intensity', 120) }};
+    </script>
+    <script defer src="{{ 'app.js' | asset }}"></script>
+    {% if theme.settings.get('enable_snow', true) %}
+        <script defer src="{{ 'js/snow-waterfall.js' | asset }}"></script>
+    {% endif %}
+</body>
+</html>
