@@ -1,0 +1,14 @@
+{
+  "common": {
+    "home": "Home",
+    "shop": "Shop",
+    "cart": "Cart",
+    "products": "Products"
+  },
+  "cart": {
+    "title": "Shopping Cart"
+  },
+  "thank_you": {
+    "title": "Thank You"
+  }
+}
