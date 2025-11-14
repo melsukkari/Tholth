@@ -1,0 +1,100 @@
+{
+  "settings": [
+    {
+      "key": "winter_mode",
+      "type": "switch",
+      "title": "Winter Mode",
+      "title_ar": "الوضع الشتوي",
+      "description": "Enable winter theme with snow effects",
+      "description_ar": "تفعيل المظهر الشتوي مع تأثيرات الثلج",
+      "default": true
+    },
+    {
+      "key": "snow_intensity",
+      "type": "range",
+      "title": "Snow Intensity",
+      "title_ar": "كثافة الثلج",
+      "description": "Control the amount of snowflakes (0-100)",
+      "description_ar": "التحكم في كمية رقائق الثلج (0-100)",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 10
+    },
+    {
+      "key": "snow_color",
+      "type": "color",
+      "title": "Snow Color",
+      "title_ar": "لون الثلج",
+      "description": "Customize snow color",
+      "description_ar": "تخصيص لون الثلج",
+      "default": "#FFFFFF"
+    },
+    {
+      "key": "enable_snow_mobile",
+      "type": "switch",
+      "title": "Snow on Mobile",
+      "title_ar": "الثلج على الجوال",
+      "description": "Show snow effect on mobile devices",
+      "description_ar": "إظهار تأثير الثلج على الأجهزة المحمولة",
+      "default": false
+    },
+    {
+      "key": "overlay_speed",
+      "type": "range",
+      "title": "Overlay Animation Speed",
+      "title_ar": "سرعة تحريك النافذة",
+      "description": "Animation speed in milliseconds",
+      "description_ar": "سرعة التحريك بالميلي ثانية",
+      "default": 300,
+      "min": 100,
+      "max": 1000,
+      "step": 100
+    },
+    {
+      "key": "primary_color",
+      "type": "color",
+      "title": "Primary Color",
+      "title_ar": "اللون الأساسي",
+      "description": "Main theme color",
+      "description_ar": "اللون الرئيسي للقالب",
+      "default": "#3B82F6"
+    },
+    {
+      "key": "secondary_color",
+      "type": "color",
+      "title": "Secondary Color",
+      "title_ar": "اللون الثانوي",
+      "description": "Secondary theme color",
+      "description_ar": "اللون الثانوي للقالب",
+      "default": "#60A5FA"
+    },
+    {
+      "key": "dark_mode",
+      "type": "switch",
+      "title": "Dark Mode",
+      "title_ar": "الوضع الداكن",
+      "description": "Enable dark winter theme",
+      "description_ar": "تفعيل المظهر الشتوي الداكن",
+      "default": true
+    },
+    {
+      "key": "enable_ajax_overlay",
+      "type": "switch",
+      "title": "AJAX Category Overlay",
+      "title_ar": "نافذة الفئات المنبثقة",
+      "description": "Enable smooth category browsing without page reload",
+      "description_ar": "تفعيل تصفح الفئات بدون إعادة تحميل الصفحة",
+      "default": true
+    },
+    {
+      "key": "logo",
+      "type": "image",
+      "title": "Store Logo",
+      "title_ar": "شعار المتجر",
+      "description": "Upload your store logo",
+      "description_ar": "رفع شعار متجرك",
+      "default": ""
+    }
+  ]
+}
