@@ -1,0 +1,198 @@
+{#
+| Variable                       | Type     | Description                                                                               |
+|--------------------------------|----------|-------------------------------------------------------------------------------------------|
+| theme                          | object   |                                                                                           |
+| theme.color                    | object   |                                                                                           |
+| theme.color.primary            | string   | Main color in hexadecimal ex: `#4d4d4d` => can be set from Twilight Dashboard            |
+| theme.color.darker(float alpha, ?string hexColor)  | string   | get darker color from `theme.primary.color` or from passed color, `alpha` range from 0.0-1.0             |
+| theme.color.lighter(float alpha, ?string hexColor) | string   | get lighter color from `theme.primary.color` or from passed color, `alpha` range from 0.0-1.0            |
+| theme.font                     | ?object  | Salla predefined font, null when the theme doesn't have `fonts` feature                  |
+| theme.font.name                | string   | DINNextLTArabic-Regular, Amazon-Ember, Apple, Dubai, Estedad                             |
+| theme.font.url                 | string   | css full url ex: 'https://my_store.test/dist/fonts/default.css'                          |
+| theme.settings                 | object   | dynamic object with values of theme settings                                              |
+| theme.settings.get(key)        | mixed    | get theme setting value by key ex: `theme.settings.get('key')`                           |
+| store                          | object   |                                                                                           |
+| store.name                     | string   |                                                                                           |
+| store.mobile                   | string   |                                                                                           |
+| store.email                    | string   |                                                                                           |
+| store.logo                     | string   | Store logo URL                                                                            |
+| store.url                      | string   |                                                                                           |
+| user                           | object   | user information                                                                          |
+| user.id                        | int      |                                                                                           |
+| user.name                      | string   |                                                                                           |
+| user.email                     | string   |                                                                                           |
+| user.mobile                    | string   |                                                                                           |
+| user.avatar                    | string   |                                                                                           |
+| user.type                      | string   | `user` or `guest`                                                                         |
+| locale                         | string   | current locale `en` or `ar`                                                               |
+| direction                      | string   | `ltr` or `rtl`                                                                            |
+#}
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ theme.settings.get('winter_mode_enabled') ? 'winter-mode' : '' }} {{ theme.settings.get('dark_theme_enabled') ? 'dark-theme' : '' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="{{ theme.color.primary }}">
+    
+    {# Title and SEO #}
+    <title>{{ page.title|default(store.name) }}</title>
+    <meta name="description" content="{{ page.description|default(store.description) }}">
+    
+    {# Favicon #}
+    <link rel="icon" type="image/x-icon" href="{{ store.favicon|default('https://cdn.salla.network/images/logo/favicon.png') }}">
+    
+    {# Fonts #}
+    {% if theme.font %}
+        <link rel="preload" href="{{ theme.font.url }}" as="style">
+        <link rel="stylesheet" href="{{ theme.font.url }}">
+    {% endif %}
+    
+    {# Theme Styles #}
+    <link rel="preload" href="{{ 'app.css' | asset }}" as="style">
+    <link rel="stylesheet" href="{{ 'app.css' | asset }}">
+    
+    {# Winter Theme Variables #}
+    <style>
+        :root {
+            --winter-primary: {{ theme.settings.get('primary_winter_color') ?: '#1E3A8A' }};
+            --winter-secondary: {{ theme.settings.get('secondary_winter_color') ?: '#60A5FA' }};
+            --snow-color: {{ theme.settings.get('snow_color') ?: '#FFFFFF' }};
+            --overlay-speed: {{ theme.settings.get('overlay_animation_speed') ?: 300 }}ms;
+        }
+        
+        {% if theme.settings.get('dark_theme_enabled') %}
+        .dark-theme {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border-color: #334155;
+        }
+        
+        .dark-theme body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        {% endif %}
+    </style>
+    
+    {# Salla Head Hook - Critical for Salla functionality #}
+    {% hook 'head:end' %}
+</head>
+<body id="app" class="overflow-x-hidden {% hook 'body:classes' %}
+  {{ theme.settings.get('footer_is_dark') ? ' footer-is-dark' : ' footer-is-light' }}
+  {{ theme.settings.get('topnav_is_dark') ? ' topnav-is-dark' : '' }}
+  {{ theme.settings.get('sticky_add_to_cart') ? ' is-sticky-product-bar' : '' }}
+  {{ theme.settings.get('winter_mode_enabled') ? ' has-winter-effects' : '' }}
+  ">
+  
+  {# Loading Indicator #}
+  <div class="loader-init"></div>
+  
+  {# Snow Canvas Container - Only if winter mode enabled #}
+  {% if theme.settings.get('winter_mode_enabled') and theme.settings.get('snow_intensity') > 0 %}
+    <canvas id="snow-canvas" 
+            class="snow-canvas fixed top-0 left-0 w-full h-full pointer-events-none z-50"
+            data-intensity="{{ theme.settings.get('snow_intensity') }}"
+            data-color="{{ theme.settings.get('snow_color') }}"
+            data-mobile="{{ theme.settings.get('enable_snow_on_mobile') ? 'true' : 'false' }}"
+            aria-hidden="true">
+    </canvas>
+  {% endif %}
+  
+  {# No JavaScript Warning #}
+  <noscript>
+    <div class="noscript-warning" style="padding: 20px; background: #fee; border: 2px solid #c00; margin: 20px; text-align: center;">
+      <strong>{{ trans('common.javascript_required') }}</strong>
+      <br>
+      <a href="https://www.enable-javascript.com/" rel="noreferrer" target="_blank">
+        {{ trans('common.enable_javascript') }}
+      </a>
+    </div>
+  </noscript>
+  
+  {# Main App Container #}
+  <div class="app-inner flex flex-col min-h-full">
+    {% hook 'body:start' %}
+    
+    {# Snow Script Inclusion #}
+    {% if theme.settings.get('winter_mode_enabled') and theme.settings.get('snow_intensity') > 0 %}
+      {% javascript 'snow', defer: true %}
+    {% endif %}
+    
+    {# Overlay Script Inclusion #}
+    {% javascript 'overlay', defer: true %}
+    
+    {# Header Component #}
+    {% component 'header.header' %}
+    
+    {# Main Content Block #}
+    <main id="main-content" class="main-content flex-grow" role="main">
+      {% block content %}{% endblock %}
+    </main>
+    
+    {# Footer Component #}
+    {% component 'footer.footer' %}
+  </div>
+  
+  {# AJAX Overlay Container #}
+  <div id="category-overlay" 
+       class="category-overlay fixed inset-0 z-40 hidden"
+       data-size="{{ theme.settings.get('overlay_size') ?: 'medium' }}"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="overlay-title">
+    <div class="overlay-backdrop absolute inset-0 bg-black bg-opacity-50" 
+         data-dismiss="overlay"></div>
+    <div class="overlay-content relative z-10 bg-white dark:bg-gray-800 overflow-auto">
+      <button class="overlay-close absolute top-4 {{ direction == 'rtl' ? 'left-4' : 'right-4' }} text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+              data-dismiss="overlay"
+              aria-label="{{ trans('common.close') }}">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      <div id="overlay-body" class="overlay-body p-6">
+        {# Dynamic content loaded via AJAX #}
+      </div>
+    </div>
+  </div>
+  
+  {# Salla Body End Hook - Critical for Salla functionality #}
+  {% javascript 'app', defer: true %}
+  {% hook 'body:end' %}
+  
+
+  
+  {# Salla Twilight Components #}
+  <salla-offer-modal></salla-offer-modal>
+  <salla-search></salla-search>
+  
+  {% if user.type == 'guest' %}
+    <salla-login-modal></salla-login-modal>
+  {% endif %}
+  
+  {# Winter Theme Scripts - Load after Salla ready #}
+  {% if theme.settings.get('winter_mode_enabled') %}
+    <script defer src="{{ 'snow.js' | asset }}"></script>
+  {% endif %}
+  
+  <script defer src="{{ 'overlay.js' | asset }}"></script>
+  
+  {# Initialize theme settings for JavaScript #}
+  <script>
+    window.tholthSettings = {
+      winterMode: {{ theme.settings.get('winter_mode_enabled') ? 'true' : 'false' }},
+      snowIntensity: {{ theme.settings.get('snow_intensity') ?: 50 }},
+      snowColor: '{{ theme.settings.get('snow_color') ?: '#FFFFFF' }}',
+      overlaySize: '{{ theme.settings.get('overlay_size') ?: 'medium' }}',
+      overlaySpeed: {{ theme.settings.get('overlay_animation_speed') ?: 300 }},
+      darkTheme: {{ theme.settings.get('dark_theme_enabled') ? 'true' : 'false' }},
+      enableSnowMobile: {{ theme.settings.get('enable_snow_on_mobile') ? 'true' : 'false' }},
+      locale: '{{ locale }}',
+      direction: '{{ direction }}'
+    };
+  </script>
+</body>
+</html>
