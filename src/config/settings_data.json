@@ -1,0 +1,17 @@
+{
+  "current": "default",
+  "presets": {
+    "default": {
+      "winter_mode_enabled": true,
+      "snow_intensity": 50,
+      "snow_color": "#FFFFFF",
+      "overlay_size": "medium",
+      "dark_theme_enabled": true,
+      "primary_winter_color": "#1E3A8A",
+      "secondary_winter_color": "#60A5FA",
+      "overlay_animation_speed": 300,
+      "enable_snow_on_mobile": false,
+      "squar_photo_bg_image_size": "cover"
+    }
+  }
+}
