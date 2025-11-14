@@ -1,0 +1,35 @@
+{
+  "name": "Tholth",
+  "version": "1.0.0",
+  "author": "Mohammed Al-Sugari",
+  "description": "Premium Salla theme with winter effects and overlay navigation",
+  "description_ar": "قالب سلة متميز مع تأثيرات شتوية وتنقل سلس",
+  "license": "MIT",
+  "support_url": "https://github.com/melsukkari/Tholth",
+  "documentation_url": "https://github.com/melsukkari/Tholth#readme",
+  "preview_image": "preview.png",
+  "screenshots": [
+    "screenshot1.png",
+    "screenshot2.png"
+  ],
+  "tags": [
+    "winter",
+    "snow",
+    "overlay",
+    "rtl",
+    "responsive",
+    "dark-mode",
+    "ajax"
+  ],
+  "compatibility": {
+    "salla": ">=2.0.0"
+  },
+  "features": [
+    "Canvas snowfall effect",
+    "AJAX category overlays",
+    "Dark winter theme",
+    "Mobile responsive",
+    "RTL support (Arabic + English)",
+    "Customizable settings"
+  ]
+}
