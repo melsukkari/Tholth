@@ -1,141 +1,97 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-    important: false,
-    content: [
-        "src/views/**/*.twig",
-        "src/assets/js/**/*.js",
-        //todo:: inject it via the plugin or easier way
-        'node_modules/@salla.sa/twilight-tailwind-theme/safe-list-css.txt',
-    ],
-    darkMode: 'class', // or 'media' or 'class'
-    theme   : {
-        container : {
-            center : true,
-            padding: '10px',
-            screens: {
-                '2xl': "1280px"
-            }
+  content: [
+    './src/**/*.{html,js,twig}',
+    './src/templates/**/*.twig',
+    './src/sections/**/*.twig',
+    './src/snippets/**/*.twig'
+  ],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
         },
-        fontFamily: {
-            sans: [
-                'var(--font-main)',
-                '-apple-system',
-                'BlinkMacSystemFont',
-            ],
-            primary: "var(--font-main)"
+        winter: {
+          ice: '#E0F2FE',
+          snow: '#F0F9FF',
+          frost: '#BAE6FD',
+          sky: '#0EA5E9',
+          night: '#1E3A8A',
+        }
+      },
+      fontFamily: {
+        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        arabic: ['Cairo', 'Tajawal', 'sans-serif'],
+      },
+      animation: {
+        'snow-fall': 'snowFall 10s linear infinite',
+        'fade-in': 'fadeIn 0.3s ease-in',
+        'slide-up': 'slideUp 0.3s ease-out',
+        'slide-down': 'slideDown 0.3s ease-in',
+      },
+      keyframes: {
+        snowFall: {
+          '0%': { transform: 'translateY(-100vh)' },
+          '100%': { transform: 'translateY(100vh)' },
         },
-        extend    : {
-            transitionTimingFunction: {
-              'elastic': 'cubic-bezier(0.55, 0, 0.1, 1)',
-            },
-            gridTemplateColumns: {
-                'auto-fill'  : 'repeat(auto-fill, 290px)',
-            },
-            colors             : {
-                'dark'         : '#1D1F1F',
-                'darker'       : '#0E0F0F',
-                'danger'       : '#AE0A0A'
-            },
-            spacing: {
-              '3.75': '15px',
-              '7.5' : '30px',
-              '58'  : '232px',
-              '62'  : '248px',
-              '100' : '28rem',
-              '116' : '464px',
-              '132' : '528px',
-              '200' : '800px',
-            },
-            borderRadius       : {
-                'large': '22px',
-                'big'  : '40px',
-                'tiny' : '3px',
-                DEFAULT: '.75rem',
-            },
-            fontSize           : {
-                'icon-lg'   : '33px',
-                'xxs'       : '10px',
-                'xxxs'      : '8px',
-                'title-size': '42px',
-                '22px'      : '22px',
-            },
-            lineHeight         : {
-                '12': '3rem',
-                '14': '3.5rem',
-                '16': '4rem',
-                '18': '4.5rem',
-                '20': '5rem',
-            },
-            boxShadow          : {
-                'default' : '5px 10px 30px #2B2D340D;',
-                'top'     : '0px 0px 10px #0000001A;',
-                'md'      : '5px 10px 99px #2B2D340D',
-                'dropdown'      : '0 4px 8px rgba(161, 121, 121, 0.07)',
-                'light'   : '0px 4px 15px rgba(1, 1, 1, 0.06)',
-                'huge'    : '0px 3px 6px #00000029',
-                'progress': '0 5px 15px rgba(92, 213, 196, 0.4)',
-                'mobile': 'rgb(0 0 0 / 9%) 0px 2px 1px, rgb(0 0 0 / 9%) 0px 4px 2px, rgb(0 0 0 / 9%) 0px 8px 4px, rgb(0 0 0 / 9%) 0px 16px 18px, rgb(0 0 0 / 9%) -15px 10px 7px, rgb(0 0 0 / 9%) -20px 10px 20px, rgb(0 0 0 / 9%) -20px 10px 20px, rgb(0 0 0 / 9%) -25px 20px 20px',
-            },
-            width              : {
-                '18': '4.5rem',
-                '22': '5.5rem',
-                '74': '18.5rem',
-                '76': '19rem',
-                '78': '19.5rem',
-            },
-            height             : {
-                'banner'        : '200px',
-                'lg-banner'     : '428px',
-                'full-banner'   : '600px',
-                '500'           : '500px',
-                '460'           : '460px',
-            },
-            minWidth           : {
-                '1/4': '25%',
-                '1/2': '50%',
-                '3/4': '75%',
-            },
-            maxWidth           : {
-                '1/4': '25%',
-                '1/2': '50%',
-                '3/4': '75%',
-            },
-            zIndex             : {
-                '1': '1',
-                '2': '2',
-                '-1': '-1',
-            },
-            screens            : {
-                'xxs': {'min': '380px', 'max': '479px'},
-                'xs': '480px',
-            },
-            backgroundOpacity  : {
-                '05': '0.05',
-            },
-            transitionProperty : {
-                'height': 'height'
-            },
-            keyframes: {
-                slideUpFromBottom: {
-                    '0%': { transform: 'translateY(100%)', opacity: '0' },
-                    '100%': { transform: 'translateY(0%)', opacity: '1' },
-                },
-                slideDownFromBottom: {
-                    '0%': { transform: 'translateY(0%)', opacity: '1' },
-                    '100%': { transform: 'translateY(100%)', opacity: '0' },
-                },
-            },
-            animation: {
-                slideUpFromBottom: 'slideUpFromBottom .6s linear',
-                slideDownFromBottom: 'slideDownFromBottom .6s linear',
-            },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         },
+        slideUp: {
+          '0%': { 
+            transform: 'translateY(50px) scale(0.95)',
+            opacity: '0'
+          },
+          '100%': { 
+            transform: 'translateY(0) scale(1)',
+            opacity: '1'
+          },
+        },
+        slideDown: {
+          '0%': { 
+            transform: 'translateY(0) scale(1)',
+            opacity: '1'
+          },
+          '100%': { 
+            transform: 'translateY(50px) scale(0.95)',
+            opacity: '0'
+          },
+        },
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '128': '32rem',
+      },
+      borderRadius: {
+        '4xl': '2rem',
+      },
+      boxShadow: {
+        'winter': '0 10px 40px rgba(59, 130, 246, 0.3)',
+        'overlay': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+      },
+      backdropBlur: {
+        xs: '2px',
+      },
     },
-    corePlugins: {
-      outline: false,
-    },
-    plugins: [
-      require('@salla.sa/twilight-tailwind-theme'),
-      require('@tailwindcss/forms'),
-      require('@tailwindcss/line-clamp'),
-    ],
+  },
+  plugins: [
+    require('@tailwindcss/forms')({
+      strategy: 'class',
+    }),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }
