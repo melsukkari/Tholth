@@ -1,320 +1,333 @@
 {
-  "name": {
-    "ar": "ثلج",
-    "en": "Tholth"
-  },
-  "version": "1.0.0",
-  "repository": "https://github.com/melsukkari/Tholth",
-  "author_email": "mohammed@example.com",
-  "homepage": "https://github.com/melsukkari/Tholth",
-  "license": "MIT",
-  "description": {
-    "ar": "قالب شتوي متميز مع تأثيرات الثلج وتراكبات AJAX للتصفح السلس",
-    "en": "Premium winter theme with snowfall effects and AJAX overlays for smooth navigation"
-  },
-  "support_url": "https://github.com/melsukkari/Tholth/issues",
-  "preview": {
-    "image": "https://cdn.salla.network/images/themes/tholth/preview.png"
-  },
-  "features": [
-    "mega-menu",
-    "fonts",
-    "color",
-    "breadcrumb",
-    "unite-cards-height",
-    "component-featured-products",
-    "component-fixed-banner",
-    "component-fixed-products",
-    "component-products-slider",
-    "component-photos-slider",
-    "component-parallax-background",
-    "component-testimonials",
-    "component-square-photos",
-    "component-store-features",
-    "component-youtube",
-    "menu-images",
-    "filters"
-  ],
-  "components": [
-    {
-      "key": "winter-snow-canvas",
-      "title": {
-        "ar": "تأثير الثلج المتحرك",
-        "en": "Animated Snow Effect"
-      },
-      "icon": "sicon-snowflake",
-      "path": "home.winter-snow",
-      "image": "https://cdn.salla.network/images/themes/tholth/snow-preview.png",
-      "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "snow-desc",
-          "value": {
-            "ar": "<div class='alert alert-info'>تأثير ثلج متحرك باستخدام Canvas للأداء العالي</div>",
-            "en": "<div class='alert alert-info'>Animated snow effect using Canvas for high performance</div>"
-          }
-        }
-      ]
+    "name": {
+        "ar": "ثلج",
+        "en": "Tholth"
     },
-    {
-      "key": "ajax-category-overlay",
-      "title": {
-        "ar": "تراكب الفئات بتقنية AJAX",
-        "en": "AJAX Category Overlay"
-      },
-      "icon": "sicon-layers",
-      "path": "home.category-overlay",
-      "image": "https://cdn.salla.network/images/themes/tholth/overlay-preview.png",
-      "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "overlay-desc",
-          "value": {
-            "ar": "<div class='alert alert-info'>تصفح الفئات بدون إعادة تحميل الصفحة</div>",
-            "en": "<div class='alert alert-info'>Browse categories without page reload</div>"
-          }
-        }
-      ]
-    }
-  ],
-  "settings": [
-    {
-      "id": "winter_mode_enabled",
-      "type": "boolean",
-      "format": "switch",
-      "label": {
-        "ar": "تفعيل الوضع الشتوي",
-        "en": "Enable Winter Mode"
-      },
-      "description": {
-        "ar": "تفعيل جميع تأثيرات الثلج والوضع الداكن",
-        "en": "Enable all snow effects and dark mode"
-      },
-      "icon": "sicon-snowflake",
-      "value": true,
-      "required": false
+    "version": "1.0.0",
+    "repository": "https://github.com/melsukkari/Tholth",
+    "author_email": "mohammed@example.com",
+    "homepage": "https://github.com/melsukkari/Tholth",
+    "license": "MIT",
+    "description": {
+        "ar": "قالب شتوي متميز مع تأثيرات الثلج وتراكبات AJAX للتصفح السلس",
+        "en": "Premium winter theme with snowfall effects and AJAX overlays for smooth navigation"
     },
-    {
-      "id": "snow_intensity",
-      "type": "number",
-      "format": "range",
-      "label": {
-        "ar": "كثافة الثلج",
-        "en": "Snow Intensity"
-      },
-      "description": {
-        "ar": "التحكم في كمية الثلج المتساقط (0 = إيقاف، 100 = أقصى كثافة)",
-        "en": "Control the amount of falling snow (0 = off, 100 = maximum)"
-      },
-      "icon": "sicon-adjust",
-      "value": 50,
-      "min": 0,
-      "max": 100,
-      "step": 10,
-      "required": false,
-      "conditions": [
-        {
-          "id": "winter_mode_enabled",
-          "operation": "=",
-          "value": true
-        }
-      ]
+    "support_url": "https://github.com/melsukkari/Tholth/issues",
+    "preview": {
+        "image": "https://cdn.salla.network/images/themes/tholth/preview.png"
     },
-    {
-      "id": "snow_color",
-      "type": "string",
-      "format": "color",
-      "label": {
-        "ar": "لون الثلج",
-        "en": "Snow Color"
-      },
-      "description": {
-        "ar": "اختر لون رقائق الثلج",
-        "en": "Choose the color of snowflakes"
-      },
-      "icon": "sicon-palette",
-      "value": "#FFFFFF",
-      "required": false,
-      "conditions": [
+    "features": [
+        "mega-menu",
+        "fonts",
+        "color",
+        "breadcrumb",
+        "unite-cards-height",
+        "component-featured-products",
+        "component-fixed-banner",
+        "component-fixed-products",
+        "component-products-slider",
+        "component-photos-slider",
+        "component-parallax-background",
+        "component-testimonials",
+        "component-square-photos",
+        "component-store-features",
+        "component-youtube",
+        "menu-images",
+        "filters"
+    ],
+    "components": [
         {
-          "id": "winter_mode_enabled",
-          "operation": "=",
-          "value": true
-        }
-      ]
-    },
-    {
-      "id": "overlay_size",
-      "type": "items",
-      "format": "dropdown-list",
-      "label": {
-        "ar": "حجم التراكب",
-        "en": "Overlay Size"
-      },
-      "description": {
-        "ar": "اختر حجم نافذة التراكب للفئات",
-        "en": "Choose the overlay window size for categories"
-      },
-      "icon": "sicon-window-maximize",
-      "value": "medium",
-      "options": [
-        {
-          "id": "small",
-          "label": {
-            "ar": "صغير",
-            "en": "Small"
-          },
-          "value": "small"
+            "key": "winter-snow-canvas",
+            "title": {
+                "ar": "تأثير الثلج المتحرك",
+                "en": "Animated Snow Effect"
+            },
+            "icon": "sicon-snowflake",
+            "path": "home.winter-snow",
+            "image": "https://cdn.salla.network/images/themes/tholth/snow-preview.png",
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "snow-desc",
+                    "value": {
+                        "ar": "<div class='alert alert-info'>تأثير ثلج متحرك باستخدام Canvas للأداء العالي</div>",
+                        "en": "<div class='alert alert-info'>Animated snow effect using Canvas for high performance</div>"
+                    }
+                }
+            ]
         },
         {
-          "id": "medium",
-          "label": {
-            "ar": "متوسط",
-            "en": "Medium"
-          },
-          "value": "medium"
+            "key": "ajax-category-overlay",
+            "title": {
+                "ar": "تراكب الفئات بتقنية AJAX",
+                "en": "AJAX Category Overlay"
+            },
+            "icon": "sicon-layers",
+            "path": "home.category-overlay",
+            "image": "https://cdn.salla.network/images/themes/tholth/overlay-preview.png",
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "overlay-desc",
+                    "value": {
+                        "ar": "<div class='alert alert-info'>تصفح الفئات بدون إعادة تحميل الصفحة</div>",
+                        "en": "<div class='alert alert-info'>Browse categories without page reload</div>"
+                    }
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "id": "winter_mode_enabled",
+            "type": "boolean",
+            "format": "switch",
+            "label": {
+                "ar": "تفعيل الوضع الشتوي",
+                "en": "Enable Winter Mode"
+            },
+            "description": {
+                "ar": "تفعيل جميع تأثيرات الثلج والوضع الداكن",
+                "en": "Enable all snow effects and dark mode"
+            },
+            "icon": "sicon-snowflake",
+            "value": true,
+            "required": true,
+            "selected": true,
+            "public": true
         },
         {
-          "id": "large",
-          "label": {
-            "ar": "كبير",
-            "en": "Large"
-          },
-          "value": "large"
+            "id": "snow_intensity",
+            "type": "number",
+            "format": "range",
+            "label": {
+                "ar": "كثافة الثلج",
+                "en": "Snow Intensity"
+            },
+            "description": {
+                "ar": "التحكم في كمية الثلج المتساقط (0 = إيقاف، 100 = أقصى كثافة)",
+                "en": "Control the amount of falling snow (0 = off, 100 = maximum)"
+            },
+            "icon": "sicon-adjust",
+            "value": 50,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "required": true,
+            "conditions": [
+                {
+                    "id": "winter_mode_enabled",
+                    "operation": "=",
+                    "value": true
+                }
+            ],
+            "public": true
         },
         {
-          "id": "fullscreen",
-          "label": {
-            "ar": "ملء الشاشة",
-            "en": "Fullscreen"
-          },
-          "value": "fullscreen"
-        }
-      ],
-      "required": false
-    },
-    {
-      "id": "dark_theme_enabled",
-      "type": "boolean",
-      "format": "switch",
-      "label": {
-        "ar": "تفعيل الوضع الداكن",
-        "en": "Enable Dark Theme"
-      },
-      "description": {
-        "ar": "تطبيق نظام الألوان الداكنة للواجهة",
-        "en": "Apply dark color scheme to the interface"
-      },
-      "icon": "sicon-moon",
-      "value": true,
-      "required": false
-    },
-    {
-      "id": "primary_winter_color",
-      "type": "string",
-      "format": "color",
-      "label": {
-        "ar": "اللون الشتوي الأساسي",
-        "en": "Primary Winter Color"
-      },
-      "description": {
-        "ar": "اللون الأساسي للموضوع الشتوي",
-        "en": "Primary color for winter theme"
-      },
-      "icon": "sicon-palette",
-      "value": "#1E3A8A",
-      "required": false
-    },
-    {
-      "id": "secondary_winter_color",
-      "type": "string",
-      "format": "color",
-      "label": {
-        "ar": "اللون الشتوي الثانوي",
-        "en": "Secondary Winter Color"
-      },
-      "description": {
-        "ar": "اللون الثانوي للموضوع الشتوي",
-        "en": "Secondary color for winter theme"
-      },
-      "icon": "sicon-palette",
-      "value": "#60A5FA",
-      "required": false
-    },
-    {
-      "id": "overlay_animation_speed",
-      "type": "number",
-      "format": "range",
-      "label": {
-        "ar": "سرعة حركة التراكب",
-        "en": "Overlay Animation Speed"
-      },
-      "description": {
-        "ar": "سرعة ظهور واختفاء التراكب (بالميلي ثانية)",
-        "en": "Speed of overlay appearance/disappearance (in milliseconds)"
-      },
-      "icon": "sicon-clock",
-      "value": 300,
-      "min": 100,
-      "max": 1000,
-      "step": 50,
-      "required": false
-    },
-    {
-      "id": "enable_snow_on_mobile",
-      "type": "boolean",
-      "format": "switch",
-      "label": {
-        "ar": "تفعيل الثلج على الجوال",
-        "en": "Enable Snow on Mobile"
-      },
-      "description": {
-        "ar": "عرض تأثيرات الثلج على الأجهزة المحمولة (قد يؤثر على الأداء)",
-        "en": "Show snow effects on mobile devices (may affect performance)"
-      },
-      "icon": "sicon-mobile",
-      "value": false,
-      "required": false,
-      "conditions": [
-        {
-          "id": "winter_mode_enabled",
-          "operation": "=",
-          "value": true
-        }
-      ]
-    },
-    {
-      "id": "squar_photo_bg_image_size",
-      "type": "items",
-      "format": "dropdown-list",
-      "label": {
-        "ar": "طريقة عرض الصور في قسم قائمة عناصر",
-        "en": "Image Display Method in Item List Section"
-      },
-      "description": null,
-      "icon": "sicon-list",
-      "value": "cover",
-      "options": [
-        {
-          "id": "cover",
-          "label": {
-            "ar": "تغطية",
-            "en": "Cover"
-          },
-          "value": "cover"
+            "id": "snow_color",
+            "type": "string",
+            "format": "color",
+            "label": {
+                "ar": "لون الثلج",
+                "en": "Snow Color"
+            },
+            "description": {
+                "ar": "اختر لون رقائق الثلج",
+                "en": "Choose the color of snowflakes"
+            },
+            "icon": "sicon-palette",
+            "value": "#FFFFFF",
+            "required": true,
+            "conditions": [
+                {
+                    "id": "winter_mode_enabled",
+                    "operation": "=",
+                    "value": true
+                }
+            ],
+            "public": true
         },
         {
-          "id": "contain",
-          "label": {
-            "ar": "احتواء",
-            "en": "Contain"
-          },
-          "value": "contain"
+            "id": "overlay_size",
+            "type": "items",
+            "format": "dropdown-list",
+            "label": {
+                "ar": "حجم التراكب",
+                "en": "Overlay Size"
+            },
+            "description": {
+                "ar": "اختر حجم نافذة التراكب للفئات",
+                "en": "Choose the overlay window size for categories"
+            },
+            "icon": "sicon-window-maximize",
+            "value": [],
+            "options": [
+                {
+                    "id": "small",
+                    "label": {
+                        "ar": "صغير",
+                        "en": "Small"
+                    },
+                    "value": "small"
+                },
+                {
+                    "id": "medium",
+                    "label": {
+                        "ar": "متوسط",
+                        "en": "Medium"
+                    },
+                    "value": "medium"
+                },
+                {
+                    "id": "large",
+                    "label": {
+                        "ar": "كبير",
+                        "en": "Large"
+                    },
+                    "value": "large"
+                },
+                {
+                    "id": "fullscreen",
+                    "label": {
+                        "ar": "ملء الشاشة",
+                        "en": "Fullscreen"
+                    },
+                    "value": "fullscreen"
+                }
+            ],
+            "required": true,
+            "public": true
+        },
+        {
+            "id": "dark_theme_enabled",
+            "type": "boolean",
+            "format": "switch",
+            "label": {
+                "ar": "تفعيل الوضع الداكن",
+                "en": "Enable Dark Theme"
+            },
+            "description": {
+                "ar": "تطبيق نظام الألوان الداكنة للواجهة",
+                "en": "Apply dark color scheme to the interface"
+            },
+            "icon": "sicon-moon",
+            "value": true,
+            "required": true,
+            "selected": true,
+            "public": true
+        },
+        {
+            "id": "primary_winter_color",
+            "type": "string",
+            "format": "color",
+            "label": {
+                "ar": "اللون الشتوي الأساسي",
+                "en": "Primary Winter Color"
+            },
+            "description": {
+                "ar": "اللون الأساسي للموضوع الشتوي",
+                "en": "Primary color for winter theme"
+            },
+            "icon": "sicon-palette",
+            "value": "#1E3A8A",
+            "required": true,
+            "public": true
+        },
+        {
+            "id": "secondary_winter_color",
+            "type": "string",
+            "format": "color",
+            "label": {
+                "ar": "اللون الشتوي الثانوي",
+                "en": "Secondary Winter Color"
+            },
+            "description": {
+                "ar": "اللون الثانوي للموضوع الشتوي",
+                "en": "Secondary color for winter theme"
+            },
+            "icon": "sicon-palette",
+            "value": "#60A5FA",
+            "required": true,
+            "public": true
+        },
+        {
+            "id": "overlay_animation_speed",
+            "type": "number",
+            "format": "range",
+            "label": {
+                "ar": "سرعة حركة التراكب",
+                "en": "Overlay Animation Speed"
+            },
+            "description": {
+                "ar": "سرعة ظهور واختفاء التراكب (بالميلي ثانية)",
+                "en": "Speed of overlay appearance/disappearance (in milliseconds)"
+            },
+            "icon": "sicon-clock",
+            "value": 300,
+            "min": 100,
+            "max": 1000,
+            "step": 50,
+            "required": true,
+            "public": true
+        },
+        {
+            "id": "enable_snow_on_mobile",
+            "type": "boolean",
+            "format": "switch",
+            "label": {
+                "ar": "تفعيل الثلج على الجوال",
+                "en": "Enable Snow on Mobile"
+            },
+            "description": {
+                "ar": "عرض تأثيرات الثلج على الأجهزة المحمولة (قد يؤثر على الأداء)",
+                "en": "Show snow effects on mobile devices (may affect performance)"
+            },
+            "icon": "sicon-mobile",
+            "value": false,
+            "required": true,
+            "conditions": [
+                {
+                    "id": "winter_mode_enabled",
+                    "operation": "=",
+                    "value": true
+                }
+            ],
+            "public": true,
+            "selected": true
+        },
+        {
+            "id": "squar_photo_bg_image_size",
+            "type": "items",
+            "format": "dropdown-list",
+            "label": {
+                "ar": "طريقة عرض الصور في قسم قائمة عناصر",
+                "en": "Image Display Method in Item List Section"
+            },
+            "description": null,
+            "icon": "sicon-list",
+            "value": [],
+            "options": [
+                {
+                    "id": "cover",
+                    "label": {
+                        "ar": "تغطية",
+                        "en": "Cover"
+                    },
+                    "value": "cover"
+                },
+                {
+                    "id": "contain",
+                    "label": {
+                        "ar": "احتواء",
+                        "en": "Contain"
+                    },
+                    "value": "contain"
+                }
+            ],
+            "required": true,
+            "public": true
         }
-      ],
-      "required": false
-    }
-  ]
+    ]
 }
