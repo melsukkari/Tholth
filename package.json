@@ -32,7 +32,7 @@
   "homepage": "https://github.com/melsukkari/Tholth#readme",
   "devDependencies": {
     "tailwindcss": "^4.1.17",
-    "autoprefixer": "^10.4.14",
+    "autoprefixer": "^10.4.22",
     "postcss": "^8.4.24",
     "laravel-mix": "^6.0.49"
   },
