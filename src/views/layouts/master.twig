@@ -48,9 +48,9 @@
         <link rel="stylesheet" href="{{ theme.font.url }}">
     {% endif %}
     
-    {# Theme Styles #}
-    <link rel="preload" href="{{ 'app.css' | asset }}" as="style">
-    <link rel="stylesheet" href="{{ 'app.css' | asset }}">
+    {# ✅ FIXED: Theme Styles - Added 'css/' subfolder #}
+    <link rel="preload" href="{{ 'css/app.css' | asset }}" as="style">
+    <link rel="stylesheet" href="{{ 'css/app.css' | asset }}">
     
     {# Winter Theme Variables #}
     <style>
@@ -154,8 +154,8 @@
   {# Salla Body End Hook - Critical for Salla functionality #}
   {% hook 'body:end' %}
   
-  {# Main Application Script #}
-  <script defer src="{{ 'app.js' | asset }}"></script>
+  {# ✅ FIXED: Main Application Script - Added 'js/' subfolder #}
+  <script defer src="{{ 'js/app.js' | asset }}"></script>
   
   {# Salla Twilight Components #}
   <salla-offer-modal></salla-offer-modal>
@@ -165,12 +165,12 @@
     <salla-login-modal></salla-login-modal>
   {% endif %}
   
-  {# Winter Theme Scripts - Load after Salla ready #}
+  {# ✅ FIXED: Winter Theme Scripts - Added 'js/' subfolder #}
   {% if theme.settings.get('winter_mode_enabled') %}
-    <script defer src="{{ 'snow.js' | asset }}"></script>
+    <script defer src="{{ 'js/snow.js' | asset }}"></script>
   {% endif %}
   
-  <script defer src="{{ 'overlay.js' | asset }}"></script>
+  <script defer src="{{ 'js/overlay.js' | asset }}"></script>
   
   {# Initialize theme settings for JavaScript #}
   <script>
