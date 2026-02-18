@@ -323,3 +323,123 @@ body {
     display: none !important;
   }
 }
+
+/* ===== ❄️ SNOWFALL EFFECT FIXES ===== */
+.snow-canvas {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  pointer-events: none !important; /* Allows clicking through snow */
+  z-index: 50 !important; /* Below buttons, above background */
+  opacity: 0.9;
+}
+
+/* Snowflake particle style (if using DOM elements instead of canvas) */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: #fff; /* White snow */
+  font-size: 1em;
+  user-select: none;
+  pointer-events: none;
+  z-index: 50;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+/* ===== 🔘 OVERLAY BOARD BUTTON FIXES ===== */
+.category-overlay-trigger {
+  position: fixed;
+  bottom: 20px;
+  {{ direction == 'rtl' ? 'left' : 'right' }}: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1E3A8A, #60A5FA); /* Winter blue gradient */
+  color: white;
+  border: 2px solid rgba(255,255,255,0.3);
+  box-shadow: 0 4px 20px rgba(30, 58, 138, 0.4);
+  cursor: pointer;
+  z-index: 100; /* Above snow, below modals */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.category-overlay-trigger:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(30, 58, 138, 0.6);
+}
+
+.category-overlay-trigger svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ===== ❌ CLOSE BUTTON FIXES ===== */
+.overlay-close {
+  position: absolute;
+  top: 16px;
+  {{ direction == 'rtl' ? 'left' : 'right' }}: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(30, 58, 138, 0.9); /* Winter blue */
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 110; /* Above overlay content */
+  transition: all 0.2s ease;
+}
+
+.overlay-close:hover {
+  background: #1E3A8A;
+  transform: rotate(90deg);
+}
+
+.overlay-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ===== 🎨 WINTER THEME COLORS (Override Salla defaults) ===== */
+:root {
+  --winter-primary: #1E3A8A;      /* Deep blue */
+  --winter-secondary: #60A5FA;    /* Light blue */
+  --winter-accent: #9D4EDD;       /* Purple accent */
+  --winter-bg: #0f172a;           /* Dark background */
+  --winter-text: #f1f5f9;         /* Light text */
+  --winter-border: #334155;       /* Subtle border */
+}
+
+/* Apply winter theme to common elements */
+.winter-mode body {
+  background-color: var(--winter-bg) !important;
+  color: var(--winter-text) !important;
+}
+
+.winter-mode .btn-primary,
+.winter-mode button[type="submit"],
+.winter-mode .add-to-cart {
+  background: linear-gradient(135deg, var(--winter-primary), var(--winter-secondary)) !important;
+  color: white !important;
+  border: none !important;
+}
+
+.winter-mode .card,
+.winter-mode .product-card {
+  background: rgba(30, 58, 138, 0.1) !important;
+  border: 1px solid var(--winter-border) !important;
+  border-radius: 12px !important;
+}
